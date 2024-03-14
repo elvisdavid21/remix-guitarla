@@ -1,9 +1,24 @@
+import { Link } from '@remix-run/react'
 
 function Guitarra({guitarra}) {
-    console.log(guitarra)
+    
+    const {nombre, precio, url, imagen, descripcion} = guitarra
+    
   return (
-    <div>
-        guitarras
+    <div className="guitarra">
+      <img src={imagen.data.attributes.formats.medium.url} alt={`Imagen ${nombre}`} />
+      <div className="contenido">
+        <h3>{nombre}</h3>
+        <p className="descripcion">{descripcion[0].children[0].text}</p>
+        <p className="precio">${precio}</p>
+
+        <Link 
+          className='enlace' 
+          to={`/guitarras/${url}`}
+        >
+          Ver Producto
+        </Link>
+      </div>
     </div>
   )
 }
